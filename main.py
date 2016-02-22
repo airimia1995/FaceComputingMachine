@@ -3,15 +3,14 @@ from utils_google import get_vision_api
 from base64 import b64encode
 from PIL import Image
 from PIL import ImageDraw
-from argparse import ArgumentParser
 #from utils_image import (read_image, read_image_base64, save_image, draw_face, draw_box, draw_text)
 
-#inputfile  = "input.jpeg"
+inputfile  = "input.jpeg"
 outputfile = "output.jpeg"
 
-def main(api_key,inputfile):
+def main():
 
-	vision = get_vision_api(api_key)
+	vision = get_vision_api()
 	
 	body = make_request(inputfile)
 	response = vision.images().annotate(body=body).execute()
@@ -117,9 +116,4 @@ def extract_vertices(vertices):
 	return v1,v2
 	
 if __name__ == '__main__':
-	p = ArgumentParser()
-	p.add_argument("-k", dest="api_key", required=True)
-	p.add_argument("-i", dest="image_path", required=True,help="path to image")
-	a = p.parse_args()
-	c = main(a.api_key,a.image_path)
-	#main()
+	main()
