@@ -12,12 +12,12 @@ API_DISCOVERY_FILE = os.path.join(os.getcwd(), 'vision_discovery_v1alpha1.json')
 
 """ Google Authentication Utilities """
 
-def get_vision_api():
+def get_vision_api(api_key):
 	#credentials = get_api_credentials('https://www.googleapis.com/auth/cloud-platform')
 	#credentials = gce.AppAssertionCredentials(scope='https://www.googleapis.com/auth/devstorage.read_write')
 	with open(API_DISCOVERY_FILE, 'r') as f:
 		doc = f.read()	
-	return discovery.build_from_document(doc, developerKey='{API key}', http=httplib2.Http())
+	return discovery.build_from_document(doc, developerKey=api_key, http=httplib2.Http())
 
 
 def get_api_credentials(scope, service_account=True):
