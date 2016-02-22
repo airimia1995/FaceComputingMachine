@@ -17,7 +17,7 @@ def get_vision_api():
 	#credentials = gce.AppAssertionCredentials(scope='https://www.googleapis.com/auth/devstorage.read_write')
 	with open(API_DISCOVERY_FILE, 'r') as f:
 		doc = f.read()	
-	return discovery.build_from_document(doc, developerKey='AIzaSyCrMWYcTgkGu17mV-W0c7FeZO4NkKvpe08', http=httplib2.Http())
+	return discovery.build_from_document(doc, developerKey='{API key}', http=httplib2.Http())
 
 
 def get_api_credentials(scope, service_account=True):
